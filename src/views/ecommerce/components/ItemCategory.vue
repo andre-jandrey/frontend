@@ -19,7 +19,7 @@
                     </div>
                     <div class="item-details px-4">
 
-                        <!-- RATING & PRICE -->
+                        <!-- RATING & PRICE --
                         <div class="flex justify-between items-center">
                             <div class="text-warning border border-solid border-warning flex py-1 px-2 rounded">
                                 <span class="text-sm mr-1">{{ item.rating }}</span>
@@ -28,11 +28,11 @@
                             <h6 class="font-bold">${{ item.price }}</h6>
                         </div>
 
-                        <!-- TITLE & DESCRIPTION -->
+                        <!-- TITLE & DESCRIPTION --
                         <div class="my-4">
                             <h6 class="truncate font-semibold mb-1 hover:text-primary cursor-pointer" @click="navigate_to_detail_view">{{ item.name }}</h6>
                             <p class="item-description truncate text-sm">{{ item.description }}</p>
-                        </div>
+                        </div>-->
                     </div>
 
                     <!-- SLOT: ACTION BUTTONS -->
@@ -53,7 +53,7 @@ export default{
     },
     methods: {
       navigate_to_detail_view() {
-        this.$router.push({name: 'ecommerce-item-detail-view', params: {item_id: this.item.id }})
+        this.$router.push({name: 'categoria', params: {category_id: this.item.id }})
           .catch(() => {})
       }
     }

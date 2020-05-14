@@ -34,17 +34,17 @@ const router = new Router({
               {
                 path: '/',
                 name: 'home',
+                component: () => import('./views/ecommerce/Home.vue')
+              },
+              {
+                path: '/categoria',
+                name: 'categoria',
                 component: () => import('./views/ecommerce/ECommerceShop.vue')
               },
               {
-                path: '/teste',
-                name: 'ECommerceWishList',
-                component: () => import('./views/ecommerce/ECommerceWishList.vue')
-              },
-              {
-                path: '/page2',
-                name: 'page-2',
-                component: () => import('./views/Page2.vue')
+                path: '/checkout',
+                name: 'checkout',
+                component: () => import('./views/ecommerce/ECommerceCheckout.vue')
               },
             ],
         },

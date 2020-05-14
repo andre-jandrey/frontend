@@ -21,18 +21,19 @@ export default [
     slug: "page2",
     icon: "YoutubeIcon",
   },
-  {
+  /*{
     url: "/detalhe",
     name: "Lista de desejos",
     slug: "page2",
     icon: "HeartIcon",
-  },{
+  },*/
+  {
     url: "/Ver como ",
     name: "Seja um Instrutor",
     slug: "page2",
     icon: "VideoIcon",
   },
-  {
+ /* {
     url: "/page2",
     name: "Anúncios",
     slug: "page2",
@@ -43,7 +44,7 @@ export default [
     name: "Extrato",
     slug: "page2",
     icon: "DollarSignIcon",
-  },
+  },*/
   {
     url: "/page2",
     name: "Contato",
