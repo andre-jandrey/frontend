@@ -17,8 +17,8 @@
       <!--<bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />-->
 
       <router-link tag="div" to="/" class="vx-logo cursor-pointer mx-auto flex items-center">
-        <logo class="w-10 mr-4 fill-current text-primary" />
-        <span class="vx-logo-text text-primary">Nome do site</span>
+          <img src="/logo.png" class="h-10 w-8 mr-4" >
+        <span class="vx-logo-text text-primary"><span class="text-dark">setup</span> <span class="text-primary"> TRADER</span></span>
       </router-link>
 
       <search-bar />

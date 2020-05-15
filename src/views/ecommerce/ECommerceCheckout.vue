@@ -51,12 +51,7 @@
                                         <span class="text-sm font-semibold ml-2">REMOVE</span>
                                     </div>
 
-                                    <!-- SECONDARY BUTTON: MOVE-TO/VIEW-IN WISHLIST -->
-                                    <div class="item-view-secondary-action-btn bg-primary p-3 rounded-lg flex flex-grow items-center justify-center text-white cursor-pointer" @click="wishListButtonClicked(item)">
-                                        <feather-icon icon="HeartIcon" :svgClasses="[{'text-white fill-current': isInWishList(item.objectID)}, 'h-4 w-4']" />
-                                        <span class="text-sm font-semibold ml-2" v-if="isInWishList(item.objectID)">WISHLIST</span>
-                                        <span class="text-sm font-semibold ml-2" v-else>WISHLIST</span>
-                                    </div>
+
                                 </template>
                             </item-list-view>
                         </div>
@@ -65,37 +60,36 @@
                     <!-- RIGHT COL -->
                     <div class="vx-col lg:w-1/3 w-full">
                         <vx-card>
-                            <p class="text-grey mb-3">Options</p>
-                            <div class="flex justify-between">
-                                <span class="font-semibold">Coupons</span>
-                                <span class="font-medium text-primary cursor-pointer">Apply</span>
-                            </div>
-
-                            <vs-divider />
-
-                            <p class="font-semibold mb-3">Price Details</p>
+                            <p class="font-semibold mb-3">Dados do cartão</p>
                             <div class="flex justify-between mb-2">
-                                <span class="text-grey">Total MRP</span>
-                                <span>$598</span>
+                                <span class="text-grey">Total</span>
+                                <span>R$ 598,00</span>
                             </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-grey">Bag Discount</span>
-                                <span class="text-success">-25$</span>
+                            <div class="flex items-start flex-col">
+                                <span class="mt-4">NOME: </span>
+                                <vs-input v-validate="'required|digits:3'" name="cvv" v-model="cvv" class="mt-1 w-full" />
                             </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-grey">Estimated Tax</span>
-                                <span>$1.3</span>
+                            <span v-show="errors.has('cvv-form.cvv')" class="text-danger ml-24">{{ errors.first('cvv-form.cvv') }}</span>
+                        
+                            <div class="flex items-start flex-col">
+                                <span class="mt-4">NUMERO: </span>
+                                <vs-input v-validate="'required|digits:3'" name="cvv" v-model="cvv" class="mt-1 w-full" />
                             </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-grey">EMI Eligibility</span>
-                                <a href="#" class="text-primary">Details</a>
+                            <span v-show="errors.has('cvv-form.cvv')" class="text-danger ml-24">{{ errors.first('cvv-form.cvv') }}</span>
+ 
+                            <div class="flex items-start flex-col">
+                                <span class="mt-4">VALIDADE: </span>
+                                <vs-input v-validate="'required|digits:3'" name="cvv" v-model="cvv" class="mt-1 w-full" />
                             </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-grey">Delivery Charges</span>
-                                <span class="text-success">Free</span>
+                            <span v-show="errors.has('cvv-form.cvv')" class="text-danger ml-24">{{ errors.first('cvv-form.cvv') }}</span>
+ 
+                            <div class="flex items-start flex-col">
+                                <span class="mt-4">CÓDIGO DE SEGURANÇA: </span>
+                                <vs-input v-validate="'required|digits:3'" name="cvv" v-model="cvv" class="mt-1 w-full" />
                             </div>
-
-                            <vs-divider />
+                            <span v-show="errors.has('cvv-form.cvv')" class="text-danger ml-24">{{ errors.first('cvv-form.cvv') }}</span>
+ 
+                             <vs-divider />
 
                             <div class="flex justify-between font-semibold mb-3">
                                 <span>Total</span>
@@ -114,12 +108,12 @@
 
             </tab-content>
 
-            <!-- tab 2 content -->
+            <!-- tab 2 content --
             <tab-content title="Address" icon="feather icon-home" class="mb-5">
 
                 <div class="vx-row">
 
-                    <!-- LEFT COL: NEW ADDRESS -->
+                    <!-- LEFT COL: NEW ADDRESS --
                     <div class="vx-col lg:w-2/3 w-full">
                         <vx-card title="Add New Address" subtitle="Be sure to check &quot;Deliver to this address&quot; when you have finished" class="mb-base">
 
@@ -227,7 +221,7 @@
                         </vx-card>
                     </div>
 
-                    <!-- RIGHT COL: CONTINUE WITH SAVED ADDRESS -->
+                    <!-- RIGHT COL: CONTINUE WITH SAVED ADDRESS --
                     <div class="vx-col lg:w-1/3 w-full">
                         <vx-card title="John Doe">
                             <div>
@@ -244,7 +238,7 @@
                     </div>
 
                 </div>
-            </tab-content>
+            </tab-content>-->
 
             <!-- tab 3 content -->
             <tab-content title="Payment" icon="feather icon-credit-card" class="mb-5">
@@ -379,10 +373,15 @@ export default {
     },
     computed: {
         cartItems() {
-            return this.$store.state.eCommerce.cartItems.slice().reverse();
-        },
-        isInWishList() {
-            return (itemId) => this.$store.getters['eCommerce/isInWishList'](itemId)
+            return [{
+                id: 8,
+                image: require("@/assets/images/pages/eCommerce/1.jpeg"),
+                name: 'teste',
+                rating: 4,
+                price: 498.00,
+                name: 'Nome do curso',
+                description : 'brave descrição'
+            }]
         },
     },
     methods: {
@@ -391,14 +390,7 @@ export default {
         removeItemFromCart(item) {
             this.$store.dispatch('eCommerce/toggleItemInCart', item)
         },
-        wishListButtonClicked(item) {
-            // Toggle in Wish List
-            if (this.isInWishList(item.objectID)) this.$router.push('/apps/eCommerce/wish-list').catch(() => {})
-            else {
-                this.toggleItemInWishList(item)
-                this.removeItemFromCart(item)
-            }
-        },
+        
         toggleItemInWishList(item) {
             this.$store.dispatch('eCommerce/toggleItemInWishList', item)
         },

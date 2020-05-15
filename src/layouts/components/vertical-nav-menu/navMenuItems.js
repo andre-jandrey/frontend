@@ -11,13 +11,13 @@
 export default [
   {
     url: "/",
-    name: "Home",
+    name: "HOME",
     slug: "home",
     icon: "HomeIcon",
   },
   {
     url: "/teste",
-    name: "Meus cursos",
+    name: "MEUS CURSOS",
     slug: "page2",
     icon: "YoutubeIcon",
   },
@@ -29,7 +29,7 @@ export default [
   },*/
   {
     url: "/Ver como ",
-    name: "Seja um Instrutor",
+    name: "SEJA UM PARCEIRO",
     slug: "page2",
     icon: "VideoIcon",
   },
@@ -47,7 +47,7 @@ export default [
   },*/
   {
     url: "/page2",
-    name: "Contato",
+    name: "CONTATO",
     slug: "page2",
     icon: "AtSignIcon",
   },

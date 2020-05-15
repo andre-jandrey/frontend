@@ -67,6 +67,11 @@ require('./assets/css/iconfont.css')
 
 
 Vue.config.productionTip = false
+import VeeValidator, { Validator } from 'vee-validate'
+import Dictionary from './components/validators/dictionary'
+
+
+Vue.use(VeeValidator, { locale: 'pt', dictionary: Dictionary })
 
 new Vue({
     router,
